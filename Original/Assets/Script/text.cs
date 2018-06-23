@@ -34,20 +34,20 @@ public class text : MonoBehaviour {
         aux = GameObject.FindGameObjectWithTag("jogada").GetComponent<projetil>().pro_angle.ToString();
         aux = aux.Substring(0, 5);
         angloy.text = aux;*/
-        vento.text = "Vento: " + govento.GetComponent<vento>().printwind.ToString().Substring(0, 3);
+        vento.text = govento.GetComponent<vento>().printwind.ToString().Substring(0, 3);
         if ((gopro.GetComponent<projetil>().pro_direcao))
         {
             //print(GameObject.FindGameObjectWithTag("jogada").GetComponent<projetil>().pro_direcao);
-            direcao.text = ("Direção: direita");
+            direcao.text = ("Mira: direita");
         }
         else
         {
-            direcao.text = ("Direção: esquerda");
+            direcao.text = ("Mira: esquerda");
         }
         vidap1.text = "Vida: " + gochar.GetComponent<player>().vida.ToString();
-        tempo.text = "Tempo: " + gochar.GetComponent<player>().tdj.ToString();
-        forca.text = "Forca: " + gopro.GetComponent<projetil>().pro_str.ToString().Substring(0,4);
-        angloy.text = "Altura: " + gopro.GetComponent<projetil>().pro_angle.ToString().Substring(0, 4);
+        tempo.text = "Tempo: " + gochar.GetComponent<player>().tdj.ToString().Substring(0, 1); ;
+        forca.text = "Forca: " + gopro.GetComponent<projetil>().pro_str.ToString().Substring(0,3);
+        angloy.text = "Altura: " + gopro.GetComponent<projetil>().pro_angle.ToString().Substring(0, 3);
         
         
         

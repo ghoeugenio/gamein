@@ -154,7 +154,7 @@ Camera:
     height: 1
   near clip plane: 0.2
   far clip plane: 5000
-  field of view: 50
+  field of view: 78
   orthographic: 0
   orthographic size: 4.5
   m_Depth: -1
@@ -259,6 +259,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1712607110256890, guid: 6a460efb2ec2df044aa0b64c05697cb8, type: 2}
   prefab_projetil: {fileID: 1194133137831428}
+  pro_str: 0
+  pro_angle: 0
+  pro_direcao: 0
   jogar: {fileID: 1146122855440034, guid: 3da39239bdb8b044ca2129e8acc41635, type: 2}
   crit: 0
   dano: 10

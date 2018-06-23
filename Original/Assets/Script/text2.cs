@@ -37,16 +37,16 @@ public class text2 : MonoBehaviour {
         vento2.text = "Vento:" + govento2.GetComponent<vento>().printwind.ToString().Substring(0,3);
         if (gopro2.GetComponent<projetil2>().pro_direcao)
         {
-            direcao2.text = "Direção: direita";
+            direcao2.text = "Mira: direita";
         }
         else
         {
-            direcao2.text = "Direção: esquerda";
+            direcao2.text = "Mira: esquerda";
         }
         vidap2.text = "Vida: " + gochar2.GetComponent<player2>().vida.ToString();
-        tempo2.text = "Tempo: " + gochar2.GetComponent<player2>().tdj.ToString();
-        forca2.text = "Forca: " + gopro2.GetComponent<projetil2>().pro_str.ToString().Substring(0, 4);
-        angloy2.text = "Altura: " + gopro2.GetComponent<projetil2>().pro_angle.ToString().Substring(0, 4);
+        tempo2.text = "Tempo: " + gochar2.GetComponent<player2>().tdj.ToString().Substring(0, 1);
+        forca2.text = "Forca: " + gopro2.GetComponent<projetil2>().pro_str.ToString().Substring(0, 3);
+        angloy2.text = "Altura: " + gopro2.GetComponent<projetil2>().pro_angle.ToString().Substring(0, 3);
         
     }
 }

@@ -11,13 +11,14 @@ public class vento : MonoBehaviour {
 	void Start () {
         x = true;
         y = false;
+        wind = 0f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
         if(GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vez && x)
         {
-            wind = Random.Range(-1.0f, 4.0f);
+            wind = Random.Range(-2.0f, 2.0f);
             y = true;
             x = false;
 
@@ -26,7 +27,7 @@ public class vento : MonoBehaviour {
 
         if (GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vezdois && y)
         {
-            wind = Random.Range(-1.0f, 4.0f);
+            wind = Random.Range(-2.0f, 2.0f);
             x = true;
             y = false;
         }
