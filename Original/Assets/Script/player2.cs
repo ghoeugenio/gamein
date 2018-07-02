@@ -35,7 +35,7 @@ public class player2 : MonoBehaviour {
 
         tdj += Time.deltaTime;
 
-        if(tdj >= 10f)
+        if(tdj >= 100f)
         {
             tdj = 0;
             GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vez = false;

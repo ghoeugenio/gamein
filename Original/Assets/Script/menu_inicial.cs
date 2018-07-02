@@ -34,13 +34,13 @@ public class menu_inicial : MonoBehaviour {
 
         if ((Input.GetKey(KeyCode.KeypadEnter)) || (Input.GetKey("return")))
         {
-            SceneManager.LoadScene("Fase");
+            SceneManager.LoadScene("MenuPrincipal");
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        /*if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
-        }
+        }*/
 
     }
 }

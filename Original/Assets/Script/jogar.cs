@@ -29,6 +29,12 @@ public class jogar : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            GameObject.FindGameObjectWithTag("MainCamera").SetActive(true);
+        }
+
+
         if (vez)
         {
             GameObject.FindGameObjectWithTag("player2").GetComponent<player2>().enabled = true;

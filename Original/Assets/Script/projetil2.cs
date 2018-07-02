@@ -7,21 +7,25 @@ public class projetil2 : MonoBehaviour {
     public GameObject player;
     //public GameObject cam_projetil;
     //public GameObject cam_char;
-    public GameObject prefab_projetil;
+    public GameObject prefab_projetil, prefab_explosao;
     //private Rigidbody2D pro_rigidbody;
     public float pro_str, pro_angle;
-    private bool pro_v;
+    private bool pro_v, c_lan, pressleft, pressright, t_ventovef;
     public bool pro_direcao;
     //public bool pro_collider;
     private Vector2 pro_posicao, p_posicao;
     public GameObject jogar;
-    public int crit, dano = 10, total;
+    public int crit, dano, total;
+    public GameObject setinha, setinhaclone;
+    private float t_vento;
 
     // Use this for initialization
     void Start () {
         //pro_rigidbody = GameObject.FindGameObjectWithTag("projetil").GetComponent<Rigidbody2D>();
         pro_str = 1.0f;
         pro_angle = 2.0f;
+        dano = 10;
+        t_vento = 0.5f;
         //GameObject.FindGameObjectWithTag("campro").SetActive(false);
         //gameObject.SetActive(false);
         // pro_tape = true;
@@ -36,18 +40,41 @@ public class projetil2 : MonoBehaviour {
 
         //pro_collider = false;
 
+        if (c_lan)
+        {
+            setinha.transform.eulerAngles = new Vector3(0, 0, -50);
+            setinhaclone.transform.eulerAngles = new Vector3(0, 0, 50);
+            c_lan = false;
+        }
+
         if (Input.GetKey(KeyCode.H))//direciona a palheta pra baixo
         {
-            if (pro_angle >= 1f)//limite de anglo
+            if (pro_angle > 1.1f)//limite de anglo
             {
                 pro_angle -= 0.02f;//constante de alteracao da direcao
+                if (pro_direcao)
+                {
+                    setinha.transform.eulerAngles = new Vector3(0, 0, setinha.transform.eulerAngles.z - 0.4f);
+                }
+                else
+                {
+                    setinhaclone.transform.eulerAngles = new Vector3(0, 0, setinhaclone.transform.eulerAngles.z + 0.4f);
+                }
             }
         }
         if (Input.GetKey(KeyCode.Y))//direciona a palheta pra cima
         {
-            if (pro_angle <= 6f)//limite de anglo
+            if (pro_angle <= 4f)//limite de anglo
             {
                 pro_angle += 0.02f;//constante de alteracao da direcao
+                if (pro_direcao)
+                {
+                    setinha.transform.eulerAngles = new Vector3(0, 0, setinha.transform.eulerAngles.z + 0.4f);
+                }
+                else
+                {
+                    setinhaclone.transform.eulerAngles = new Vector3(0, 0, setinhaclone.transform.eulerAngles.z - 0.4f);
+                }
             }
         }
 
@@ -66,12 +93,31 @@ public class projetil2 : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.U))    //escolha da direcao
         {
+            if (pressright)
+            {
+                pro_angle = 2f;
+                setinhaclone.transform.eulerAngles = new Vector3(0, 0, 50);
+            }
+            pressleft = true;
+            pressright = false;
             pro_direcao = false;
+            setinha.SetActive(false);
+            setinhaclone.SetActive(true);
         }
 
         if (Input.GetKey(KeyCode.O))    //escolha da direcao
         {
+            if (pressleft)
+            {
+                pro_angle = 2f;
+                setinha.transform.eulerAngles = new Vector3(0, 0, -50);
+            }
+            pressleft = false;
+            pressright = true;
             pro_direcao = true;
+            setinhaclone.SetActive(false);
+            setinha.SetActive(true);
+
         }
 
         if ((Input.GetKeyUp(KeyCode.N) && pro_v))//quando c eh solto
@@ -94,28 +140,45 @@ public class projetil2 : MonoBehaviour {
             p_posicao = new Vector2(p_posicao.x, p_posicao.y + 0.3f);
             GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vezdois = false;
             Instantiate(prefab_projetil, p_posicao, transform.rotation);
+            t_ventovef = true;
             //GameObject.FindGameObjectWithTag("campro").SetActive(true);
             //GameObject.FindGameObjectWithTag("camper").SetActive(false);
             //print("angle: " + pro_angle);
             if (pro_direcao)//sentido do lanncamento
             {
                 //print("esquerda");
-                GameObject.FindGameObjectWithTag("projetil2").GetComponent<Rigidbody2D>().velocity = new Vector2((pro_str)- GameObject.FindGameObjectWithTag("vento").GetComponent<vento>().wind, (pro_str * pro_angle));
+                GameObject.FindGameObjectWithTag("projetil2").GetComponent<Rigidbody2D>().velocity = new Vector2((pro_str), (pro_str * pro_angle));
             }
             else
             {
                 //print("direita");
-                GameObject.FindGameObjectWithTag("projetil2").GetComponent<Rigidbody2D>().velocity = new Vector2((pro_str * (-1f)) - GameObject.FindGameObjectWithTag("vento").GetComponent<vento>().wind, (pro_str * pro_angle));
+                GameObject.FindGameObjectWithTag("projetil2").GetComponent<Rigidbody2D>().velocity = new Vector2((pro_str * (-1f)), (pro_str * pro_angle));
             }
             pro_v = false;//verificador para lancamento
             //print(pro_str);
             pro_str = 1f;//forca inicial
             pro_angle = 2.0f;//anglo inicial
-            
+            c_lan = true;
+        }
+
+        if (t_ventovef)
+        {
+            t_vento -= Time.deltaTime;
+            if (t_vento < 0)
+            {
+                t_ventovef = false;
+                GameObject.FindGameObjectWithTag("projetil2").GetComponent<Rigidbody2D>().velocity = new Vector2(GameObject.FindGameObjectWithTag("projetil2").GetComponent<Rigidbody2D>().velocity.x + (GameObject.FindGameObjectWithTag("vento").GetComponent<vento>().wind), GameObject.FindGameObjectWithTag("projetil2").GetComponent<Rigidbody2D>().velocity.y);
+            }
+            print("pass");
+
         }
     }
     public void OnCollisionEnter2D(Collision2D collision)
     {
+        float x, y;
+        Quaternion qua;
+        Vector2 vec;
+
         if ((collision.gameObject.tag == "chao") || (collision.gameObject.tag == "limite") || (collision.gameObject.tag == "limiteclone") || (collision.gameObject.tag == "calco"))//verifica se colidio com o chao
         {
             //gameObject.SetActive(false);
@@ -125,13 +188,19 @@ public class projetil2 : MonoBehaviour {
             //cam_char.SetActive(true);
             //cam_projetil.SetActive(false);
             //pro_collider = true;
+
             GameObject.FindGameObjectWithTag("player2").GetComponent<player2>().tdj = 0;
+            x = GameObject.FindGameObjectWithTag("projetil2").transform.position.x;
+            y = GameObject.FindGameObjectWithTag("projetil2").transform.position.y;
+            qua = GameObject.FindGameObjectWithTag("projetil2").transform.rotation;
+            vec = new Vector2(x, y);
+            Destroy(GameObject.FindGameObjectWithTag("projetil2"));            //destroi o projetil
+            Instantiate(prefab_explosao, vec, qua);
             GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vez = false;
             GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vezdois = true;
-            Destroy(GameObject.FindGameObjectWithTag("projetil2"));            //destroi o projetil
             GameObject.FindGameObjectWithTag("chao").GetComponent<AudioSource>().Play();
             GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().cantwo = true;
-            //Thread.Sleep(1000);                 //aguarda 2s
+            
             //cria outro no lugar onnde ele estava
             //cam_projetil.GetComponent<campro>().unsetter();
             //cam_char.GetComponent<camper>().setter();   //transfere a camera pro personagem novamente
