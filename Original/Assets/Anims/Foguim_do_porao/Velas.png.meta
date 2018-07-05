@@ -1,17 +1,13 @@
 fileFormatVersion: 2
-guid: ea3647f00624a7b40af4d13bdff20e5b
+guid: e52a15eee9514f446bf307ec8e74f93b
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Quadracima_0
-    21300002: Quadracima_1
-    21300004: Quadracima_2
-    21300006: Quadracima_3
-    21300008: Quadracima_4
-    21300010: Quadracima_5
-    21300012: Quadracima_6
-    21300014: Quadracima_7
-    21300016: Quadracima_8
-    21300018: Quadracima_9
+    21300000: Velas_0
+    21300002: Velas_1
+    21300004: Velas_2
+    21300006: Velas_3
+    21300008: Velas_4
+    21300010: Velas_5
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -53,7 +49,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 700
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -71,7 +67,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -82,7 +78,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -93,7 +89,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -103,201 +99,121 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Quadracima_0
+      name: Velas_0
       rect:
         serializedVersion: 2
-        x: 898
-        y: 7210
-        width: 260
-        height: 260
-      alignment: 0
+        x: 177
+        y: 927
+        width: 33
+        height: 66
+      alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c7f6bff943e7e7c49870b88b2e6c7922
+      spriteID: d6bd7aaabbd2dde43ad151a5a095fe42
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Quadracima_1
+      name: Velas_1
       rect:
         serializedVersion: 2
-        x: 2946
-        y: 7210
-        width: 260
-        height: 260
-      alignment: 0
+        x: 561
+        y: 927
+        width: 30
+        height: 57
+      alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 69334c8cca013a947b9a4a68d5fe732a
+      spriteID: 927994f769dd03c47acf70280ac316b5
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Quadracima_2
+      name: Velas_2
       rect:
         serializedVersion: 2
-        x: 4994
-        y: 7210
-        width: 260
-        height: 260
-      alignment: 0
+        x: 174
+        y: 543
+        width: 42
+        height: 75
+      alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4251b79f8d60b974cbcb7264f096141d
+      spriteID: 95d627c486ba3e8468ce47f422617969
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Quadracima_3
+      name: Velas_3
       rect:
         serializedVersion: 2
-        x: 898
-        y: 5162
-        width: 260
-        height: 260
-      alignment: 0
+        x: 561
+        y: 543
+        width: 30
+        height: 57
+      alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5fa8a26d22931304e84c1abcf857e920
+      spriteID: 4cdd7f1115dc05446a4aba2a1f678c88
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Quadracima_4
+      name: Velas_4
       rect:
         serializedVersion: 2
-        x: 2946
-        y: 5162
-        width: 260
-        height: 260
-      alignment: 0
+        x: 177
+        y: 159
+        width: 33
+        height: 66
+      alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8699df852e9c2b042877b0c100a9493c
+      spriteID: a8b92661016d21f4cbe1d1703a6f07e3
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Quadracima_5
+      name: Velas_5
       rect:
         serializedVersion: 2
-        x: 4994
-        y: 5162
-        width: 260
-        height: 260
-      alignment: 0
+        x: 561
+        y: 159
+        width: 30
+        height: 57
+      alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3bd115b0b3df9a94bb5e5dddd3d1ad52
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Quadracima_6
-      rect:
-        serializedVersion: 2
-        x: 898
-        y: 3114
-        width: 260
-        height: 260
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a1283777b75db594f917c08aba5b8ab8
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Quadracima_7
-      rect:
-        serializedVersion: 2
-        x: 2946
-        y: 3114
-        width: 260
-        height: 260
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a5ffe731067cd734ca279c1e17e18bd5
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Quadracima_8
-      rect:
-        serializedVersion: 2
-        x: 4994
-        y: 3114
-        width: 260
-        height: 260
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 96d86a0c21a2445438e4a807ff299c78
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Quadracima_9
-      rect:
-        serializedVersion: 2
-        x: 898
-        y: 1066
-        width: 260
-        height: 260
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 348341a903d05684eb5bd245c09c09cb
+      spriteID: 1cd7205c3d6fbf74a8066c7514b569f5
       vertices: []
       indices: 
       edges: []
@@ -305,7 +221,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 09c14f206bdd4d849b136bb3bd794e6f
+    spriteID: 3abb1134ed5df794596714a331f65852
     vertices: []
     indices: 
     edges: []

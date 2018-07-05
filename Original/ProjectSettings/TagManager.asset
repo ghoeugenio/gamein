@@ -22,6 +22,9 @@ TagManager:
   - AllBlocos
   - hit
   - vento
+  - barril
+  - portal
+  - cam_por
   layers:
   - Default
   - TransparentFX

@@ -6,13 +6,15 @@ public class explosao : MonoBehaviour
 {
 
 
-    private bool destroi;
+    private bool destroi, hit1, hit2;
     private float esperar;
 
     // Use this for initialization
     void Start()
     {
         destroi = false;
+        hit1 = true;
+        hit2 = true;
         esperar = 2f;
     }
 
@@ -32,17 +34,20 @@ public class explosao : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "chao")
+        if (collision.gameObject.tag == "Player" && hit1)
         {
-            destroi = true;
-            Update();
+            hit1 = false;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<player>().acertou(8);
         }
 
-        if(collision.gameObject.tag == "chao")
+        if (collision.gameObject.tag == "player2" && hit2)
         {
-
+            hit2 = false;
+            GameObject.FindGameObjectWithTag("player2").GetComponent<player>().acertou(8);
         }
-       
+
+        destroi = true;
+        Update();
     }
 }
 

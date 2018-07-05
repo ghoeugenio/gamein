@@ -7,11 +7,11 @@ public class projetil2 : MonoBehaviour {
     public GameObject player;
     //public GameObject cam_projetil;
     //public GameObject cam_char;
-    public GameObject prefab_projetil, prefab_explosao;
+    public GameObject prefab_projetil, prefab_explosao, prefab_portal;
     //private Rigidbody2D pro_rigidbody;
     public float pro_str, pro_angle;
     private bool pro_v, c_lan, pressleft, pressright, t_ventovef;
-    public bool pro_direcao;
+    public bool pro_direcao, pressvirgula;
     //public bool pro_collider;
     private Vector2 pro_posicao, p_posicao;
     public GameObject jogar;
@@ -159,6 +159,7 @@ public class projetil2 : MonoBehaviour {
             pro_str = 1f;//forca inicial
             pro_angle = 2.0f;//anglo inicial
             c_lan = true;
+            t_vento = 0.5f;
         }
 
         if (t_ventovef)
@@ -169,7 +170,7 @@ public class projetil2 : MonoBehaviour {
                 t_ventovef = false;
                 GameObject.FindGameObjectWithTag("projetil2").GetComponent<Rigidbody2D>().velocity = new Vector2(GameObject.FindGameObjectWithTag("projetil2").GetComponent<Rigidbody2D>().velocity.x + (GameObject.FindGameObjectWithTag("vento").GetComponent<vento>().wind), GameObject.FindGameObjectWithTag("projetil2").GetComponent<Rigidbody2D>().velocity.y);
             }
-            print("pass");
+            print("pass2");
 
         }
     }

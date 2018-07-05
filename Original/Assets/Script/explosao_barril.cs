@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class explosao_barril : MonoBehaviour {
 
-    private bool destroi;
+    private bool destroi, hit1, hit2;
     private float esperar;
 
     // Use this for initialization
     void Start ()
     {
-        destroi = true;
+        destroi = false;
         esperar = 2f;
+        hit1 = true;
+        hit2 = true;
     }
 	
 	// Update is called once per frame
@@ -27,12 +29,21 @@ public class explosao_barril : MonoBehaviour {
         }
     }
 
-    /*public void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "chao")
+        if (collision.gameObject.tag == "Player" && hit1)
         {
-            destroi = true;
-            Update();
+            hit1 = false;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<player>().acertou(35);
         }
-    }*/
+
+        if (collision.gameObject.tag == "player2" && hit2)
+        {
+            hit2 = false;
+            GameObject.FindGameObjectWithTag("player2").GetComponent<player2>().acertou(35);
+        }
+
+        destroi = true;
+        Update();
+    }
 }

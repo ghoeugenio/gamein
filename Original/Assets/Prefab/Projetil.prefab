@@ -292,9 +292,12 @@ MonoBehaviour:
   prefab_projetil: {fileID: 1194133137831428}
   prefab_explosao: {fileID: 1031240793022474, guid: bb17ad3fb429c5e42ba99ee8c92926a8,
     type: 2}
+  prefab_portal: {fileID: 1302179760394310, guid: 7013c6c91a9a1c247941435868500e94,
+    type: 2}
   pro_str: 0
   pro_angle: 0
   pro_direcao: 0
+  pressz: 0
   jogar: {fileID: 1146122855440034, guid: 3da39239bdb8b044ca2129e8acc41635, type: 2}
   crit: 0
   dano: 10
