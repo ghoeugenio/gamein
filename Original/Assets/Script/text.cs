@@ -10,6 +10,10 @@ public class text : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        vento.text = govento.GetComponent<vento>().printwind.ToString().Substring(0, 3);
+        vidap1.text = gochar.GetComponent<player>().vida.ToString();
+        tempo.text = "Tempo: " + gochar.GetComponent<player>().tdj.ToString().Substring(0, 1); ;
+        forca.text = gopro.GetComponent<projetil>().pro_str.ToString().Substring(0, 3);
     }
 	
 	// Update is called once per frame

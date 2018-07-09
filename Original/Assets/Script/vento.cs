@@ -6,13 +6,13 @@ public class vento : MonoBehaviour {
 
     public float wind, printwind;
     public bool x, y;
-    public GameObject symum, symdois;
-    public bool flum, fldois;
+    //public GameObject symum, symdois;
+    //public bool flum, fldois;
 
 	// Use this for initialization
 	void Start () {
-        flum = symum.GetComponent<SpriteRenderer>().flipX;
-        fldois = symdois.GetComponent<SpriteRenderer>().flipX;
+        //flum = symum.GetComponent<SpriteRenderer>().flipX;
+        //fldois = symdois.GetComponent<SpriteRenderer>().flipX;
         x = true;
         y = false;
         wind = 0f;
@@ -43,16 +43,5 @@ public class vento : MonoBehaviour {
             printwind = wind;
         }
         
-
-        if(wind < 0)
-        {
-            symum.GetComponent<SpriteRenderer>().flipX = true;
-            symdois.GetComponent<SpriteRenderer>().flipX = true;
-        }
-        else
-        {
-            symum.GetComponent<SpriteRenderer>().flipX = false;
-            symdois.GetComponent<SpriteRenderer>().flipX = false;
-        }
     }
 }

@@ -34,7 +34,7 @@ public class explosao_barril : MonoBehaviour {
         if (collision.gameObject.tag == "Player" && hit1)
         {
             hit1 = false;
-            GameObject.FindGameObjectWithTag("Player").GetComponent<player>().acertou(35);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<player>().acertou(35);   
         }
 
         if (collision.gameObject.tag == "player2" && hit2)

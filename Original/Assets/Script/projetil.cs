@@ -7,34 +7,53 @@ public class projetil : MonoBehaviour {
     public GameObject player;
     public GameObject prefab_projetil, prefab_explosao, prefab_portal;
     public float pro_str, pro_angle;
-    private bool pro_v, c_lan, pressleft, pressright, t_ventovef, destroi;
-    public bool pro_direcao, pressz;
+    private bool pro_v, c_lan, pressleft, pressright, t_ventovef, destroi, naoexplodiu, desgrude;
+    public bool pro_direcao, presss, correcao;
     private Vector2 pro_posicao, p_posicao;
     public GameObject jogar;
     public int crit, dano, total;
     public GameObject setinha, setinhaclone;
-    private float t_vento, esperar;
+    public GameObject symum;
+    private float t_vento, esperar, esperapouca;
     
 	// Use this for initialization
 	void Start () {
+
         pro_str = 1.0f;
         pro_angle = 2.0f;
         dano = 10;
         t_vento = 0.5f;
-        pressz = false;
+        presss = false;
         esperar = 2f;
         destroi = false;
+        naoexplodiu = true;
+        desgrude = false;
     }
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (GameObject.FindGameObjectWithTag("vento").GetComponent<vento>().wind < 0)
+        {
+            symum.GetComponent<SpriteRenderer>().flipX = true;
+        }
+        else
+        {
+            symum.GetComponent<SpriteRenderer>().flipX = false;
+        }
+
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<player>().correcao)//primeira jogada(correcao de bug)      
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<player>().correcao = false;
+            Instantiate(prefab_projetil, GameObject.FindGameObjectWithTag("Player").gameObject.transform);
+        }
 
         if (destroi)
         {
             esperar -= Time.deltaTime;
             if (esperar < 0)
             {
-                Destroy(gameObject);
+                //Destroy(gameObject);
                 GameObject.FindGameObjectWithTag("Player").GetComponent<player>().tdj = 0;
                 Destroy(GameObject.FindGameObjectWithTag("projetil"));            //destroi o projetil
                 GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vez = true;
@@ -92,6 +111,7 @@ public class projetil : MonoBehaviour {
                 print("overcarry");
                 pro_str = 1;//limitador de forca de lancamento
             }
+            esperapouca = 0.5f;
         }
 
         if (Input.GetKey(KeyCode.Q))    //escolha da direcao
@@ -130,12 +150,12 @@ public class projetil : MonoBehaviour {
             p_posicao = GameObject.FindGameObjectWithTag("Player").gameObject.transform.position;
             p_posicao = new Vector2(p_posicao.x, p_posicao.y + 0.3f);
             GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vez = false;
-            if (pressz)
+            if (presss)
             {
                 Instantiate(prefab_portal, p_posicao, transform.rotation);
+                presss = false;
                 if (pro_direcao)//sentido do lanncamento
                 {
-                    //print("esquerda");
                     GameObject.FindGameObjectWithTag("portal").GetComponent<Rigidbody2D>().velocity = new Vector2(pro_str, (pro_str * pro_angle));
                 }
                 else
@@ -148,7 +168,6 @@ public class projetil : MonoBehaviour {
                 Instantiate(prefab_projetil, p_posicao, transform.rotation);
                 if (pro_direcao)//sentido do lanncamento
                 {
-                    //print("esquerda");
                     GameObject.FindGameObjectWithTag("projetil").GetComponent<Rigidbody2D>().velocity = new Vector2(pro_str, (pro_str * pro_angle));
                 }
                 else
@@ -165,7 +184,7 @@ public class projetil : MonoBehaviour {
             t_vento = 0.5f;
         }
 
-        if (t_ventovef && !pressz)
+        if (t_ventovef && !presss)
         {
             t_vento -= Time.deltaTime;
             if (t_vento < 0)
@@ -173,13 +192,17 @@ public class projetil : MonoBehaviour {
                 t_ventovef = false;
                 GameObject.FindGameObjectWithTag("projetil").GetComponent<Rigidbody2D>().velocity = new Vector2(GameObject.FindGameObjectWithTag("projetil").GetComponent<Rigidbody2D>().velocity.x + (GameObject.FindGameObjectWithTag("vento").GetComponent<vento>().wind), GameObject.FindGameObjectWithTag("projetil").GetComponent<Rigidbody2D>().velocity.y);
             }
-            print("pass1");
-
         }
 
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.S))
         {
-            pressz = !pressz;
+            presss = true;
+        }
+
+        esperapouca -= Time.deltaTime;
+        if (esperapouca < 0)
+        {
+            desgrude = true;
         }
 
     }
@@ -189,6 +212,7 @@ public class projetil : MonoBehaviour {
         float x, y;
         Quaternion qua;
         Vector2 vec;
+        
 
         if ((collision.gameObject.tag == "chao") || (collision.gameObject.tag == "limite") || (collision.gameObject.tag == "limiteclone") || (collision.gameObject.tag == "calco"))//verifica se colidio com o chao
         {
@@ -208,17 +232,25 @@ public class projetil : MonoBehaviour {
         if (collision.gameObject.tag == "bloco")
         {
             GameObject.FindGameObjectWithTag("Player").GetComponent<player>().tdj = 0;
-            GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vez = true;
-            GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vezdois = false;
+            //GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vez = true;
+            //GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vezdois = false;
             Destroy(collision.gameObject);
-            x = GameObject.FindGameObjectWithTag("projetil").transform.position.x;
-            y = GameObject.FindGameObjectWithTag("projetil").transform.position.y;
-            qua = GameObject.FindGameObjectWithTag("projetil").transform.rotation;
-            vec = new Vector2(x, y);
-            Destroy(GameObject.FindGameObjectWithTag("projetil"));            //destroi o projetil
-            Instantiate(prefab_explosao, vec, qua);
+            if (naoexplodiu)
+            {
+                naoexplodiu = false;
+                x = GameObject.FindGameObjectWithTag("projetil").transform.position.x;
+                y = GameObject.FindGameObjectWithTag("projetil").transform.position.y;
+                qua = GameObject.FindGameObjectWithTag("projetil").transform.rotation;
+                vec = new Vector2(x, y);
+                Destroy(GameObject.FindGameObjectWithTag("projetil").GetComponent<SpriteRenderer>());
+                Destroy(GameObject.FindGameObjectWithTag("projetil").GetComponent<Rigidbody2D>());
+                Destroy(GameObject.FindGameObjectWithTag("projetil").GetComponent<BoxCollider2D>());
+                Destroy(GameObject.FindGameObjectWithTag("projetil").GetComponent<Animation>());
+                //Destroy(GameObject.FindGameObjectWithTag("projetil"));            //destroi o projetil
+                Instantiate(prefab_explosao, vec, qua);
+            }
             GameObject.FindGameObjectWithTag("AllBlocos").GetComponent<AudioSource>().Play();
-            GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().cantum = true;
+            //GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().cantum = true;
         }
 
         if (collision.gameObject.tag == "player2")
@@ -227,11 +259,13 @@ public class projetil : MonoBehaviour {
             total = dano + crit;
             GameObject.FindGameObjectWithTag("Player").GetComponent<player>().tdj = 0;
             GameObject.FindGameObjectWithTag("player2").GetComponent<player2>().acertou(total);
-            GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vez = true;
-            GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vezdois = false;
-            Destroy(GameObject.FindGameObjectWithTag("projetil"));
-            GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().cantum = true;
             GameObject.FindGameObjectWithTag("hit").GetComponent<AudioSource>().Play();
+            destroi = true;
+            Destroy(GameObject.FindGameObjectWithTag("projetil").GetComponent<SpriteRenderer>());
+            Destroy(GameObject.FindGameObjectWithTag("projetil").GetComponent<Rigidbody2D>());
+            Destroy(GameObject.FindGameObjectWithTag("projetil").GetComponent<BoxCollider2D>());
+            Destroy(GameObject.FindGameObjectWithTag("projetil").GetComponent<Animation>());
+            Update();
         }
 
         if(collision.gameObject.tag == "barril")
@@ -241,8 +275,20 @@ public class projetil : MonoBehaviour {
             Destroy(GameObject.FindGameObjectWithTag("projetil").GetComponent<Rigidbody2D>());
             Destroy(GameObject.FindGameObjectWithTag("projetil").GetComponent<BoxCollider2D>());
             Destroy(GameObject.FindGameObjectWithTag("projetil").GetComponent<Animation>());
-            //Destroy(GameObject.FindGameObjectWithTag("projetil").GetComponent<projetil>());
             Update();
+        }
+
+        if(collision.gameObject.tag == "Player")
+        {
+            if (desgrude)
+            {
+                destroi = true;
+                Destroy(GameObject.FindGameObjectWithTag("projetil").GetComponent<SpriteRenderer>());
+                Destroy(GameObject.FindGameObjectWithTag("projetil").GetComponent<Rigidbody2D>());
+                Destroy(GameObject.FindGameObjectWithTag("projetil").GetComponent<BoxCollider2D>());
+                Destroy(GameObject.FindGameObjectWithTag("projetil").GetComponent<Animation>());
+                Update();
+            }
         }
     }
 }

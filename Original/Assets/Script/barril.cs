@@ -28,7 +28,7 @@ public class barril : MonoBehaviour {
             x = transform.position.x;
             y = transform.position.y;
             qua = transform.rotation;
-            vec = new Vector2(x, y);
+            vec = new Vector2(x, y - 0.3f);
             Instantiate(prefab_explosao_barril, vec, qua);
             Destroy(gameObject);
         }

@@ -12,7 +12,7 @@ public class player : MonoBehaviour {
     private bool p_jump = true, p_chao, p_limite, p_limiteclone;
     public float p_pulo, tdj;
     public int vida = 100;
-    //public bool cant;
+    public bool correcao;
 
 	// Use this for initialization
 	void Start () {
@@ -23,6 +23,7 @@ public class player : MonoBehaviour {
         p_limite = true;
         p_limiteclone = true;
 
+        correcao = true;
     }
 
 	// Update is called once per frame
