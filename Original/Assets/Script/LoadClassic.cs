@@ -7,7 +7,7 @@ public class LoadClassic : MonoBehaviour {
 
 	public void Classic()
     {
-        SceneManager.LoadScene("Fase");
+        SceneManager.LoadScene("selecaodepersonagem");
     }
 
     public void Arcade()

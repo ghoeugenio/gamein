@@ -15,6 +15,7 @@ public class projetil : MonoBehaviour {
     public GameObject setinha, setinhaclone;
     public GameObject symum;
     private float t_vento, esperar, esperapouca;
+    private Vector2 vec_correcao; 
     
 	// Use this for initialization
 	void Start () {
@@ -45,7 +46,8 @@ public class projetil : MonoBehaviour {
         if (GameObject.FindGameObjectWithTag("Player").GetComponent<player>().correcao)//primeira jogada(correcao de bug)      
         {
             GameObject.FindGameObjectWithTag("Player").GetComponent<player>().correcao = false;
-            Instantiate(prefab_projetil, GameObject.FindGameObjectWithTag("Player").gameObject.transform);
+            //vec_correcao = new Vector2()
+            Instantiate(prefab_projetil, GameObject.FindGameObjectWithTag("Player").gameObject.transform.position, GameObject.FindGameObjectWithTag("Player").gameObject.transform.rotation);
         }
 
         if (destroi)

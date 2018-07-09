@@ -161,13 +161,14 @@ GameObject:
   - component: {fileID: 50908502276158612}
   - component: {fileID: 82357517027533046}
   - component: {fileID: 114408423418443500}
+  - component: {fileID: 114642968878454044}
   m_Layer: 0
   m_Name: Quadracima
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1490229513053084
 GameObject:
   m_ObjectHideFlags: 1
@@ -397,7 +398,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1489667415821190}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.24, y: -0.03000021, z: 0}
+  m_LocalPosition: {x: -10.5, y: 13.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224224222080253850}
@@ -787,6 +788,17 @@ MonoBehaviour:
   m_SpinTurnLimit: 90
   m_TargetVelocityLowerLimit: 4
   m_SmoothTurnTime: 0.2
+--- !u!114 &114642968878454044
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1489667415821190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d1c44e8a84a13e4bb5eaea86440109e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114734919144831460
 MonoBehaviour:
   m_ObjectHideFlags: 1

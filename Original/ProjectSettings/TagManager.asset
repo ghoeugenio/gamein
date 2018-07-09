@@ -25,6 +25,7 @@ TagManager:
   - barril
   - portal
   - cam_por
+  - selecao
   layers:
   - Default
   - TransparentFX
