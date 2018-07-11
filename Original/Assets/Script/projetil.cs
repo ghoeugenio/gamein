@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class projetil : MonoBehaviour {
 
     public GameObject player;
     public GameObject prefab_projetil, prefab_explosao, prefab_portal;
     public float pro_str, pro_angle;
-    private bool pro_v, c_lan, pressleft, pressright, t_ventovef, destroi, naoexplodiu, desgrude;
+    private bool pro_v, c_lan, pressleft, pressright, t_ventovef, destroi, naoexplodiu, desgrude, destroidois, jahitou;
     public bool pro_direcao, presss, correcao;
     private Vector2 pro_posicao, p_posicao;
     public GameObject jogar;
@@ -15,10 +16,11 @@ public class projetil : MonoBehaviour {
     public GameObject setinha, setinhaclone;
     public GameObject symum;
     private float t_vento, esperar, esperapouca;
-    private Vector2 vec_correcao; 
-    
-	// Use this for initialization
-	void Start () {
+    private Vector2 vec_correcao;
+    public Text printdano;
+
+    // Use this for initialization
+    void Start () {
 
         pro_str = 1.0f;
         pro_angle = 2.0f;
@@ -27,8 +29,10 @@ public class projetil : MonoBehaviour {
         presss = false;
         esperar = 2f;
         destroi = false;
+        destroidois = false;
         naoexplodiu = true;
         desgrude = false;
+        jahitou = true;
     }
 	
 	// Update is called once per frame
@@ -46,8 +50,10 @@ public class projetil : MonoBehaviour {
         if (GameObject.FindGameObjectWithTag("Player").GetComponent<player>().correcao)//primeira jogada(correcao de bug)      
         {
             GameObject.FindGameObjectWithTag("Player").GetComponent<player>().correcao = false;
-            //vec_correcao = new Vector2()
-            Instantiate(prefab_projetil, GameObject.FindGameObjectWithTag("Player").gameObject.transform.position, GameObject.FindGameObjectWithTag("Player").gameObject.transform.rotation);
+            GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vez = true;
+            GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().cantum = true;
+            //vec_correcao = new Vector2(GameObject.FindGameObjectWithTag("Player").gameObject.transform.position.x, GameObject.FindGameObjectWithTag("Player").gameObject.transform.position.y + 0.6f);
+            //Instantiate(prefab_projetil, vec_correcao, GameObject.FindGameObjectWithTag("Player").gameObject.transform.rotation);
         }
 
         if (destroi)
@@ -55,7 +61,23 @@ public class projetil : MonoBehaviour {
             esperar -= Time.deltaTime;
             if (esperar < 0)
             {
-                //Destroy(gameObject);
+                //Destroy(gameObject); 
+                GameObject.FindGameObjectWithTag("Player").GetComponent<player>().tdj = 0;
+                Destroy(GameObject.FindGameObjectWithTag("projetil"));            //destroi o projetil
+                GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vez = true;
+                GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vezdois = false;
+                GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().cantum = true;
+            }
+        }
+
+        if (destroidois)
+        {
+            printdano.fontSize = 25 + (crit * 3);
+            esperar -= Time.deltaTime;
+            printdano.text = total.ToString();
+            if (esperar < 0)
+            {
+                //Destroy(gameObject); 
                 GameObject.FindGameObjectWithTag("Player").GetComponent<player>().tdj = 0;
                 Destroy(GameObject.FindGameObjectWithTag("projetil"));            //destroi o projetil
                 GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vez = true;
@@ -214,9 +236,17 @@ public class projetil : MonoBehaviour {
         float x, y;
         Quaternion qua;
         Vector2 vec;
-        
 
-        if ((collision.gameObject.tag == "chao") || (collision.gameObject.tag == "limite") || (collision.gameObject.tag == "limiteclone") || (collision.gameObject.tag == "calco"))//verifica se colidio com o chao
+        /*if (GameObject.FindGameObjectWithTag("Player").GetComponent<player>().correcao && collision.gameObject.tag == "Player")
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<player>().correcao = false;
+            GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vez = true;
+            GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().cantum = true;
+            Destroy(GameObject.FindGameObjectWithTag("projetil"));            //destroi o projetil
+
+        }*/
+
+        /*if ((collision.gameObject.tag == "chao") || (collision.gameObject.tag == "limite") || (collision.gameObject.tag == "limiteclone") || (collision.gameObject.tag == "calco"))//verifica se colidio com o chao
         {
             GameObject.FindGameObjectWithTag("Player").GetComponent<player>().tdj = 0;
             x = GameObject.FindGameObjectWithTag("projetil").transform.position.x;
@@ -225,18 +255,23 @@ public class projetil : MonoBehaviour {
             vec = new Vector2(x, y);
             Destroy(GameObject.FindGameObjectWithTag("projetil"));            //destroi o projetil
             Instantiate(prefab_explosao, vec, qua);
-            GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vez = true;
+            /*GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vez = true;
             GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vezdois = false;
             GameObject.FindGameObjectWithTag("chao").GetComponent<AudioSource>().Play();
             GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().cantum = true;
-        }
+        }*/
 
-        if (collision.gameObject.tag == "bloco")
+        if (((collision.gameObject.tag == "bloco") || (collision.gameObject.tag == "chao") || (collision.gameObject.tag == "limite") || (collision.gameObject.tag == "limiteclone") || (collision.gameObject.tag == "calco")) && jahitou)
         {
+            jahitou = false;
             GameObject.FindGameObjectWithTag("Player").GetComponent<player>().tdj = 0;
             //GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vez = true;
             //GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vezdois = false;
-            Destroy(collision.gameObject);
+            if (collision.gameObject.tag == "bloco")
+            {
+                Destroy(collision.gameObject);
+            }
+            
             if (naoexplodiu)
             {
                 naoexplodiu = false;
@@ -255,14 +290,15 @@ public class projetil : MonoBehaviour {
             //GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().cantum = true;
         }
 
-        if (collision.gameObject.tag == "player2")
+        if (collision.gameObject.tag == "player2" && jahitou)
         {
+            jahitou = false;
             crit = Random.Range(1, 10);
             total = dano + crit;
             GameObject.FindGameObjectWithTag("Player").GetComponent<player>().tdj = 0;
             GameObject.FindGameObjectWithTag("player2").GetComponent<player2>().acertou(total);
             GameObject.FindGameObjectWithTag("hit").GetComponent<AudioSource>().Play();
-            destroi = true;
+            destroidois = true;
             Destroy(GameObject.FindGameObjectWithTag("projetil").GetComponent<SpriteRenderer>());
             Destroy(GameObject.FindGameObjectWithTag("projetil").GetComponent<Rigidbody2D>());
             Destroy(GameObject.FindGameObjectWithTag("projetil").GetComponent<BoxCollider2D>());
@@ -280,7 +316,7 @@ public class projetil : MonoBehaviour {
             Update();
         }
 
-        if(collision.gameObject.tag == "Player")
+        if(collision.gameObject.tag == "Player" && !GameObject.FindGameObjectWithTag("Player").GetComponent<player>().correcao)
         {
             if (desgrude)
             {
@@ -291,6 +327,6 @@ public class projetil : MonoBehaviour {
                 Destroy(GameObject.FindGameObjectWithTag("projetil").GetComponent<Animation>());
                 Update();
             }
-        }
+        }      
     }
 }

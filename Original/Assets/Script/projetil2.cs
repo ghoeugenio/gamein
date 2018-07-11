@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class projetil2 : MonoBehaviour {
 
     public GameObject player;
     public GameObject prefab_projetil, prefab_explosao, prefab_portal;
     public float pro_str, pro_angle;
-    private bool pro_v, c_lan, pressleft, pressright, t_ventovef, destroi, naoexplodiu, desgrude;
+    private bool pro_v, c_lan, pressleft, pressright, t_ventovef, destroi, naoexplodiu, desgrude, destroidois, jahitou;
     public bool pro_direcao, pressk;
     private Vector2 pro_posicao, p_posicao;
     public GameObject jogar;
@@ -15,6 +16,7 @@ public class projetil2 : MonoBehaviour {
     public GameObject setinha, setinhaclone;
     private float t_vento, esperar, esperapouca;
     public GameObject symum;
+    public Text printdano;
 
     // Use this for initialization
     void Start () {
@@ -25,8 +27,10 @@ public class projetil2 : MonoBehaviour {
         pressk = false;
         esperar = 2f;
         destroi = false;
+        destroidois = false;
         naoexplodiu = true;
         desgrude = false;
+        jahitou = true;
     }
 
     // Update is called once per frame
@@ -48,9 +52,25 @@ public class projetil2 : MonoBehaviour {
             {
                 Destroy(gameObject);
                 GameObject.FindGameObjectWithTag("player2").GetComponent<player2>().tdj = 0;
-                Destroy(GameObject.FindGameObjectWithTag("projetil2"));            //destroi o projetil
-                GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vez = false;
+                Destroy(GameObject.FindGameObjectWithTag("projetil2"));            //destroi o projetil 
                 GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vezdois = true;
+                GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vez = false;
+                GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().cantwo = true;
+            }
+        }
+
+        if (destroidois)
+        {
+            printdano.fontSize = 25 + (crit * 3);
+            esperar -= Time.deltaTime;
+            printdano.text = total.ToString();
+            if (esperar < 0)
+            {
+                //Destroy(gameObject); 
+                GameObject.FindGameObjectWithTag("player2").GetComponent<player2>().tdj = 0;
+                Destroy(GameObject.FindGameObjectWithTag("projetil2"));            //destroi o projetil
+                GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vezdois = true;
+                GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vez = false;
                 GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().cantwo = true;
             }
         }
@@ -206,7 +226,7 @@ public class projetil2 : MonoBehaviour {
         Quaternion qua;
         Vector2 vec;
 
-        if ((collision.gameObject.tag == "chao") || (collision.gameObject.tag == "limite") || (collision.gameObject.tag == "limiteclone") || (collision.gameObject.tag == "calco"))//verifica se colidio com o chao
+        /*if ((collision.gameObject.tag == "chao") || (collision.gameObject.tag == "limite") || (collision.gameObject.tag == "limiteclone") || (collision.gameObject.tag == "calco"))//verifica se colidio com o chao
         {
             GameObject.FindGameObjectWithTag("player2").GetComponent<player2>().tdj = 0;
             x = GameObject.FindGameObjectWithTag("projetil2").transform.position.x;
@@ -215,18 +235,21 @@ public class projetil2 : MonoBehaviour {
             vec = new Vector2(x, y);
             Destroy(GameObject.FindGameObjectWithTag("projetil2"));            //destroi o projetil
             Instantiate(prefab_explosao, vec, qua);
-            GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vez = true;
+            /*GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vez = true;
             GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vezdois = false;
             GameObject.FindGameObjectWithTag("chao").GetComponent<AudioSource>().Play();
             GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().cantum = true;
-        }
-
-        if (collision.gameObject.tag == "bloco")
+        }*/
+    
+        if (((collision.gameObject.tag == "bloco") || (collision.gameObject.tag == "chao") || (collision.gameObject.tag == "limite") || (collision.gameObject.tag == "limiteclone") || (collision.gameObject.tag == "calco")) && jahitou)
         {
             GameObject.FindGameObjectWithTag("player2").GetComponent<player2>().tdj = 0;
             //GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vez = true;
             //GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vezdois = false;
-            Destroy(collision.gameObject);
+            if (collision.gameObject.tag == "bloco")
+            {
+                Destroy(collision.gameObject);
+            }
             if (naoexplodiu)
             {
                 naoexplodiu = false;
@@ -245,14 +268,15 @@ public class projetil2 : MonoBehaviour {
             //GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().cantum = true;
         }
 
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && jahitou)
         {
+            jahitou = false;
             crit = Random.Range(1, 10);
             total = dano + crit;
             GameObject.FindGameObjectWithTag("player2").GetComponent<player2>().tdj = 0;
             GameObject.FindGameObjectWithTag("Player").GetComponent<player>().acertou(total);
             GameObject.FindGameObjectWithTag("hit").GetComponent<AudioSource>().Play();
-            destroi = true;
+            destroidois = true;
             Destroy(GameObject.FindGameObjectWithTag("projetil2").GetComponent<SpriteRenderer>());
             Destroy(GameObject.FindGameObjectWithTag("projetil2").GetComponent<Rigidbody2D>());
             Destroy(GameObject.FindGameObjectWithTag("projetil2").GetComponent<BoxCollider2D>());

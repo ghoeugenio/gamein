@@ -12,7 +12,7 @@ public class player2 : MonoBehaviour {
     private bool p_jump = true, p_chao, p_limite, p_limiteclone;
     public float p_pulo, tdj;
     public int vida = 100;
-    //public bool cant;
+    public bool exibedano;
 
     // Use this for initialization
     void Start () {

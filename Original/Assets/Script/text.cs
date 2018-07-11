@@ -21,6 +21,6 @@ public class text : MonoBehaviour {
         vento.text = govento.GetComponent<vento>().printwind.ToString().Substring(0, 3);
         vidap1.text = gochar.GetComponent<player>().vida.ToString();
         tempo.text = "Tempo: " + gochar.GetComponent<player>().tdj.ToString().Substring(0, 1); ;
-        forca.text = gopro.GetComponent<projetil>().pro_str.ToString().Substring(0,3);        
+        forca.text = gopro.GetComponent<projetil>().pro_str.ToString().Substring(0,3);
     }
 }
