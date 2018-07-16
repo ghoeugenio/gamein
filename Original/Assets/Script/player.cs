@@ -10,6 +10,7 @@ public class player : MonoBehaviour {
     private AudioSource p_audio;
     public float p_vel;
     private bool p_jump = true, p_chao, p_limite, p_limiteclone;
+    private int cont_rodadas;
     public float p_pulo, tdj;
     public int vida = 100;
     public bool correcao;
@@ -22,12 +23,24 @@ public class player : MonoBehaviour {
         p_chao = true;
         p_limite = true;
         p_limiteclone = true;
-
         correcao = true;
+        p_vel = 1f;
+        p_pulo = 4.5f;
+        cont_rodadas = GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().rodadas;
     }
 
 	// Update is called once per frame
 	void Update () {
+
+        if(p_vel != 1f)
+        {
+            if(cont_rodadas != GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().rodadas)
+            {
+                cont_rodadas = GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().rodadas;
+                p_vel = 1f;
+                p_pulo = 4.5f;
+            }
+        }
 
         if(vida <= 0)
         {

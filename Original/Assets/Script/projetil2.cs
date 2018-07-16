@@ -56,12 +56,14 @@ public class projetil2 : MonoBehaviour {
                 GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vezdois = true;
                 GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vez = false;
                 GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().cantwo = true;
+                GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().inc_rodadas();
+                GameObject.FindGameObjectWithTag("jogada2").GetComponent<projetil2>().prefab_projetil.GetComponent<projetil2>().dano = 10;
             }
         }
 
         if (destroidois)
         {
-            printdano.fontSize = 25 + (crit * 3);
+            printdano.fontSize = 25 + (crit * 4);
             esperar -= Time.deltaTime;
             printdano.text = total.ToString();
             if (esperar < 0)
@@ -72,6 +74,8 @@ public class projetil2 : MonoBehaviour {
                 GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vezdois = true;
                 GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vez = false;
                 GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().cantwo = true;
+                GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().inc_rodadas();
+                GameObject.FindGameObjectWithTag("jogada2").GetComponent<projetil2>().prefab_projetil.GetComponent<projetil2>().dano = 10;
             }
         }
 
@@ -243,6 +247,7 @@ public class projetil2 : MonoBehaviour {
     
         if (((collision.gameObject.tag == "bloco") || (collision.gameObject.tag == "chao") || (collision.gameObject.tag == "limite") || (collision.gameObject.tag == "limiteclone") || (collision.gameObject.tag == "calco")) && jahitou)
         {
+            jahitou = false;
             GameObject.FindGameObjectWithTag("player2").GetComponent<player2>().tdj = 0;
             //GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vez = true;
             //GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vezdois = false;
@@ -265,7 +270,8 @@ public class projetil2 : MonoBehaviour {
                 Instantiate(prefab_explosao, vec, qua);
             }
             GameObject.FindGameObjectWithTag("AllBlocos").GetComponent<AudioSource>().Play();
-            //GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().cantum = true;
+            GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().cantum = true;
+            GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().inc_rodadas();
         }
 
         if (collision.gameObject.tag == "Player" && jahitou)

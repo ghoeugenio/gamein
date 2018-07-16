@@ -5,15 +5,16 @@ using UnityEngine;
 public class jogar : MonoBehaviour {
 
     public bool vez, vezdois, cantum, cantwo;
-
-    // Use this for initialization
     public GameObject qua1p, qua1c, qua1j, tri1p, tri1c, tri1j, pen1p, pen1c, pen1j, tra1p, tra1c, tra1j, oct1p, oct1c, oct1j;
     public GameObject qua2p, qua2c, qua2j, tri2p, tri2c, tri2j, pen2p, pen2c, pen2j, tra2p, tra2c, tra2j, oct2p, oct2c, oct2j;
+    public GameObject control_bonus, cameraprincipal;
     private int x, y;
+    public int rodadas;
 
     // Use this for initialization
     void Awake()
     {
+        rodadas = 1;
         x = selecao.select1;
         y = selecao.select2;
 
@@ -94,13 +95,17 @@ public class jogar : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GameObject.FindGameObjectWithTag("CameraGeral").SetActive(true);
+            cameraprincipal.SetActive(true);
+        }
+
+        if(Input.GetKeyUp(KeyCode.Space))
+        {
+            cameraprincipal.SetActive(false);
         }
 
 
         if (vez)
         {
-
             if (x == 0)
             {
                 qua1p.GetComponent<player>().enabled = false;
@@ -244,5 +249,11 @@ public class jogar : MonoBehaviour {
                 oct2j.SetActive(false);
             }
         }
+    }
+
+    public void inc_rodadas()
+    {
+        rodadas++;
+        control_bonus.GetComponent<control_bonus>().sortear_posicao = true;
     }
 }

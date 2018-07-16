@@ -19,8 +19,6 @@ public class explosao : MonoBehaviour
         esperar = 2f;
         vez = GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vez;
         vezdois = GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vezdois;
-        print("vez:" + vez);
-        print("vezdois:" + vezdois);
     }
 
     // Update is called once per frame

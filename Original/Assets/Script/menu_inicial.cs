@@ -8,19 +8,13 @@ public class menu_inicial : MonoBehaviour {
 
     private Text texto;
     private float time;
-    private Scene cena;
-    private AudioSource som;
+    private static AudioSource som;
 
     // Use this for initialization
     void Start () {
         texto = GetComponent<Text>();
         time = 1f;
         som = GetComponent<AudioSource>();
-        cena = SceneManager.GetActiveScene();
-        if (cena.name == "menu_inicial")
-        {
-            som.Play();
-        }
     }
 	
 	// Update is called once per frame
@@ -34,6 +28,7 @@ public class menu_inicial : MonoBehaviour {
 
         if ((Input.GetKey(KeyCode.KeypadEnter)) || (Input.GetKey("return")))
         {
+            som.Play();
             SceneManager.LoadScene("MenuPrincipal");
         }
 

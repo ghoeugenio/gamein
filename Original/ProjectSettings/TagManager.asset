@@ -26,6 +26,7 @@ TagManager:
   - portal
   - cam_por
   - selecao
+  - CameraPrincipal
   layers:
   - Default
   - TransparentFX

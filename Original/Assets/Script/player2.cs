@@ -9,10 +9,10 @@ public class player2 : MonoBehaviour {
     private SpriteRenderer p_sprite;
     private AudioSource p_audio;
     public float p_vel;
+    private int cont_rodadas;
     private bool p_jump = true, p_chao, p_limite, p_limiteclone;
     public float p_pulo, tdj;
     public int vida = 100;
-    public bool exibedano;
 
     // Use this for initialization
     void Start () {
@@ -23,10 +23,23 @@ public class player2 : MonoBehaviour {
         p_limite = true;
         p_limiteclone = true;
         tdj = 0;
+        p_vel = 1f;
+        p_pulo = 4.5f;
+        cont_rodadas = GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().rodadas;
     }
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (p_vel != 1f)
+        {
+            if (cont_rodadas != GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().rodadas)
+            {
+                cont_rodadas = GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().rodadas;
+                p_vel = 1f;
+                p_pulo = 4.5f;
+            }
+        }
 
         if (vida <= 0)
         {
