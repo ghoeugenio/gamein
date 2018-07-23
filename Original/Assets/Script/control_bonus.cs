@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class control_bonus : MonoBehaviour {
 
-    public GameObject jogar, vida, bombagold, faster, barril;
+    public GameObject jogar, vida, bombagold, faster, barril, mina;
     private GameObject obj_a_instanciar;
     private int posicao, instancia;
     public bool sortear_posicao;
@@ -24,8 +24,7 @@ public class control_bonus : MonoBehaviour {
         {
             sortear_posicao = false;
             posicao = Random.Range(0, 9);
-            instancia = Random.Range(0, 4);
-            print(instancia);
+            instancia = Random.Range(0, 5);
             if(instancia == 0)
             {
                 obj_a_instanciar = vida;
@@ -41,6 +40,10 @@ public class control_bonus : MonoBehaviour {
             if(instancia == 3)
             {
                 obj_a_instanciar = barril;
+            }
+            if(instancia == 4)
+            {
+                obj_a_instanciar = mina;
             }
         }
 

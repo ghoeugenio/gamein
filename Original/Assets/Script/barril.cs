@@ -32,5 +32,10 @@ public class barril : MonoBehaviour {
             Instantiate(prefab_explosao_barril, vec, qua);
             Destroy(gameObject);
         }
+
+        if (collision.gameObject.tag == "barril" || collision.gameObject.tag == "instanciado")
+        {
+            Destroy(gameObject);
+        }
     }
 }

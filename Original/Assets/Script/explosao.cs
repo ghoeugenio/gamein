@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class explosao : MonoBehaviour
 {
-
-
+    public GameObject text;
     private bool hit1, hit2, vez, vezdois;
     private float esperar;
     public int dano;
@@ -58,12 +57,14 @@ public class explosao : MonoBehaviour
         {
             hit1 = false;
             GameObject.FindGameObjectWithTag("Player").GetComponent<player>().acertou(8);
+            text.SetActive(true);
         }
 
         if (collision.gameObject.tag == "player2" && hit2)
         {
             hit2 = false;
             GameObject.FindGameObjectWithTag("player2").GetComponent<player2>().acertou(8);
+            text.SetActive(true);
         }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class portal : MonoBehaviour {
 
     public bool transporte, destruidos, desgrude;
-    private bool vez, vezdois;
+    private bool vez, vezdois, japassou;
     private float espera, esperapouca;
 
 	// Use this for initialization
@@ -17,7 +17,7 @@ public class portal : MonoBehaviour {
         esperapouca = 0.5f;
         vez = GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vez;
         vezdois = GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vezdois;
-
+        japassou = false;
     }
 	
 	// Update is called once per frame
@@ -25,8 +25,9 @@ public class portal : MonoBehaviour {
     {
         if (transporte)
         {
-            if (destruidos)
+            if (destruidos && !japassou)
             {
+                japassou = true;
                 if (vezdois)
                 {
                     GameObject.FindGameObjectWithTag("Player").GetComponent<player>().transform.position = transform.position;
@@ -57,13 +58,24 @@ public class portal : MonoBehaviour {
             else if(vezdois)
             {
                 GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vez = true;
+                GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vezdois = false;
                 GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().cantum = true;
+                GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().inc_rodadas();
+                GameObject.FindGameObjectWithTag("Player").GetComponent<player>().normaliza();
+                GameObject.FindGameObjectWithTag("player2").GetComponent<player2>().move = true;
+                GameObject.FindGameObjectWithTag("player2").GetComponent<player2>().setmol();
                 Destroy(gameObject);
             }
             else
             {
+                GameObject.FindGameObjectWithTag("player2").GetComponent<player2>().tdj = 0;
                 GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vezdois = true;
+                GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vez = false;
                 GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().cantwo = true;
+                GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().inc_rodadas();
+                GameObject.FindGameObjectWithTag("player2").GetComponent<player2>().normaliza();
+                GameObject.FindGameObjectWithTag("Player").GetComponent<player>().move = true;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<player>().setmol();
                 Destroy(gameObject);
             }
         }
@@ -74,7 +86,7 @@ public class portal : MonoBehaviour {
         }
 	}
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionEnter2D(Collision2D collision)
     {
         
         if ((collision.gameObject.tag == "chao") || (collision.gameObject.tag == "bloco") || (collision.gameObject.tag == "limite") || (collision.gameObject.tag == "limiteclone") || (collision.gameObject.tag == "calco") )

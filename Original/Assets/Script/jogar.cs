@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class jogar : MonoBehaviour {
 
@@ -10,10 +11,12 @@ public class jogar : MonoBehaviour {
     public GameObject control_bonus, cameraprincipal;
     private int x, y;
     public int rodadas;
+    public Scene cena;
 
     // Use this for initialization
     void Awake()
     {
+        cena = SceneManager.GetActiveScene();
         rodadas = 1;
         x = selecao.select1;
         y = selecao.select2;
@@ -93,19 +96,9 @@ public class jogar : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            cameraprincipal.SetActive(true);
-        }
-
-        if(Input.GetKeyUp(KeyCode.Space))
-        {
-            cameraprincipal.SetActive(false);
-        }
-
-
         if (vez)
         {
+            GameObject.FindGameObjectWithTag("jogada").GetComponent<projetil>().show_obj = true;
             if (x == 0)
             {
                 qua1p.GetComponent<player>().enabled = false;
@@ -179,6 +172,7 @@ public class jogar : MonoBehaviour {
         
         if (vezdois)
         {
+            GameObject.FindGameObjectWithTag("jogada2").GetComponent<projetil2>().show_obj = true;
             if (x == 0)
             {
                 qua1p.GetComponent<player>().enabled = true;
@@ -254,6 +248,14 @@ public class jogar : MonoBehaviour {
     public void inc_rodadas()
     {
         rodadas++;
-        control_bonus.GetComponent<control_bonus>().sortear_posicao = true;
+        if(cena.name == "Fase")
+        {
+            control_bonus.GetComponent<control_bonus>().sortear_posicao = true;
+        }
+        if (cena.name == "Fase2")
+        {
+            control_bonus.GetComponent<Control_Bonus_fase2>().sortear_posicao = true;
+        }
+
     }
 }

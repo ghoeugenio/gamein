@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class explosao_barril : MonoBehaviour {
 
-    private bool destroi, hit1, hit2;
+    public GameObject text;
+    private bool hit1, hit2;
     private float esperar;
 
     // Use this for initialization
     void Start ()
     {
-        destroi = false;
         esperar = 2f;
         hit1 = true;
         hit2 = true;
@@ -18,14 +18,11 @@ public class explosao_barril : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update ()
-    {
-        if (destroi)
+    {       
+        esperar -= Time.deltaTime;
+        if (esperar < 0)
         {
-            esperar -= Time.deltaTime;
-            if (esperar < 0)
-            {
-                Destroy(gameObject);
-            }
+            Destroy(gameObject);
         }
     }
 
@@ -34,16 +31,15 @@ public class explosao_barril : MonoBehaviour {
         if (collision.gameObject.tag == "Player" && hit1)
         {
             hit1 = false;
-            GameObject.FindGameObjectWithTag("Player").GetComponent<player>().acertou(35);   
+            GameObject.FindGameObjectWithTag("Player").GetComponent<player>().acertou(30);
+            text.SetActive(true);
         }
 
         if (collision.gameObject.tag == "player2" && hit2)
         {
             hit2 = false;
-            GameObject.FindGameObjectWithTag("player2").GetComponent<player2>().acertou(35);
+            GameObject.FindGameObjectWithTag("player2").GetComponent<player2>().acertou(30);
+            text.SetActive(true);
         }
-
-        destroi = true;
-        Update();
     }
 }

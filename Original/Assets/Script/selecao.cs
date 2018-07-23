@@ -127,7 +127,7 @@ public class selecao : MonoBehaviour {
 
     public void comecar()
     {
-        SceneManager.LoadScene("Fase");
+        SceneManager.LoadScene("escolhefase");
     }
 
     public void voltar()

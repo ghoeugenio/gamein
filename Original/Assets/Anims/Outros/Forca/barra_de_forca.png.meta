@@ -1,0 +1,715 @@
+fileFormatVersion: 2
+guid: 139c9baa5e80bdd4fa0a40fb886ce1c3
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: barra_de_forca_0
+    21300002: barra_de_forca_1
+    21300004: barra_de_forca_2
+    21300006: barra_de_forca_3
+    21300008: barra_de_forca_4
+    21300010: barra_de_forca_5
+    21300012: barra_de_forca_6
+    21300014: barra_de_forca_7
+    21300016: barra_de_forca_8
+    21300018: barra_de_forca_9
+    21300020: barra_de_forca_10
+    21300022: barra_de_forca_11
+    21300024: barra_de_forca_12
+    21300026: barra_de_forca_13
+    21300028: barra_de_forca_14
+    21300030: barra_de_forca_15
+    21300032: barra_de_forca_16
+    21300034: barra_de_forca_17
+    21300036: barra_de_forca_18
+    21300038: barra_de_forca_19
+    21300040: barra_de_forca_20
+    21300042: barra_de_forca_21
+    21300044: barra_de_forca_22
+    21300046: barra_de_forca_23
+    21300048: barra_de_forca_24
+    21300050: barra_de_forca_25
+    21300052: barra_de_forca_26
+    21300054: barra_de_forca_27
+    21300056: barra_de_forca_28
+  externalObjects: {}
+  serializedVersion: 5
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 300
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: barra_de_forca_0
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 14475
+        width: 458
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56565164a13774346afe8dd738578bc4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barra_de_forca_1
+      rect:
+        serializedVersion: 2
+        x: 2838
+        y: 14475
+        width: 464
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db2bef61a592f0347b4f65ba4d34d641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barra_de_forca_2
+      rect:
+        serializedVersion: 2
+        x: 5403
+        y: 14475
+        width: 457
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eacc7e1dade6bec4e805b31b44816609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barra_de_forca_3
+      rect:
+        serializedVersion: 2
+        x: 7960
+        y: 14475
+        width: 457
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4934a8cfd82cb8b45bfd0f3c448f2f86
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barra_de_forca_4
+      rect:
+        serializedVersion: 2
+        x: 10518
+        y: 14475
+        width: 463
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c12be669594328b4cbe75c60cf3216aa
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barra_de_forca_5
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 11914
+        width: 458
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad10fd9dcad384447befd1dfa843889e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barra_de_forca_6
+      rect:
+        serializedVersion: 2
+        x: 2838
+        y: 11914
+        width: 464
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ab7ba00557f48541965975fcd7b58a8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barra_de_forca_7
+      rect:
+        serializedVersion: 2
+        x: 5403
+        y: 11914
+        width: 457
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a74c37bd67e2a3d498f91af359b1579c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barra_de_forca_8
+      rect:
+        serializedVersion: 2
+        x: 7960
+        y: 11914
+        width: 457
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d116c0413545d147b3c33d4ea77180b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barra_de_forca_9
+      rect:
+        serializedVersion: 2
+        x: 10518
+        y: 11914
+        width: 463
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00b0324d6eebdcb4fbbb58c475c6d5bd
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barra_de_forca_10
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 9356
+        width: 458
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac1caff14b026e343a76e25e7a263248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barra_de_forca_11
+      rect:
+        serializedVersion: 2
+        x: 2838
+        y: 9356
+        width: 464
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd4ef1b9121ce4447ac4218ff99010f4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barra_de_forca_12
+      rect:
+        serializedVersion: 2
+        x: 5403
+        y: 9356
+        width: 457
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b150e47a97450d4788f058d7abbf68f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barra_de_forca_13
+      rect:
+        serializedVersion: 2
+        x: 7960
+        y: 9356
+        width: 457
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33ac6a08074404e45a3ca57b5c57bedd
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barra_de_forca_14
+      rect:
+        serializedVersion: 2
+        x: 10518
+        y: 9356
+        width: 463
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08c0692cb7e45634babc3aea53afd4a9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barra_de_forca_15
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 6795
+        width: 458
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c29ca1ee8f2f15d4d9c9eb2fe812e5bf
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barra_de_forca_16
+      rect:
+        serializedVersion: 2
+        x: 2838
+        y: 6795
+        width: 464
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6290dd1950ad51747b75ddecb1bcfac4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barra_de_forca_17
+      rect:
+        serializedVersion: 2
+        x: 5403
+        y: 6795
+        width: 457
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35c49cc165ea1df439cf341d211087e7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barra_de_forca_18
+      rect:
+        serializedVersion: 2
+        x: 7960
+        y: 6795
+        width: 457
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c6206903a9d4034181fc0db31f4e2c7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barra_de_forca_19
+      rect:
+        serializedVersion: 2
+        x: 10518
+        y: 6795
+        width: 463
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1735b34bb214e8747bf487d0d068f9eb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barra_de_forca_20
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 4234
+        width: 458
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b2e725da7f18f849a1353e3d75873ab
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barra_de_forca_21
+      rect:
+        serializedVersion: 2
+        x: 2838
+        y: 4234
+        width: 464
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1d2fa9f9d3b24e438dee0dc3e7b655d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barra_de_forca_22
+      rect:
+        serializedVersion: 2
+        x: 5403
+        y: 4234
+        width: 457
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0eee15be848e91e4ea0c3a32836f3453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barra_de_forca_23
+      rect:
+        serializedVersion: 2
+        x: 7960
+        y: 4234
+        width: 457
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf9f0b76493cbe144b35d1e249b0f97d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barra_de_forca_24
+      rect:
+        serializedVersion: 2
+        x: 10518
+        y: 4234
+        width: 463
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ec9ffc38602ed143882ee7d99a063bb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barra_de_forca_25
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 1676
+        width: 458
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f492b12f193326489e1721bff4646e8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barra_de_forca_26
+      rect:
+        serializedVersion: 2
+        x: 2838
+        y: 1676
+        width: 464
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 825a87a23b8a0c548ac421d29538ab03
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barra_de_forca_27
+      rect:
+        serializedVersion: 2
+        x: 5403
+        y: 1676
+        width: 457
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac55e4b1d57fd4f499ac1a09e119442b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barra_de_forca_28
+      rect:
+        serializedVersion: 2
+        x: 7960
+        y: 1676
+        width: 457
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7db4fb7a61e879b4bada75f36826c0b6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 1face7d79a065a24ba16fd0b1d18199f
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

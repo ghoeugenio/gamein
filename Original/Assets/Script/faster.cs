@@ -10,13 +10,26 @@ public class faster : MonoBehaviour {
         {
             GameObject.FindGameObjectWithTag("Player").GetComponent<player>().p_pulo = 6f;
             GameObject.FindGameObjectWithTag("Player").GetComponent<player>().p_vel = 2f;
+            Destroy(gameObject);
         }
 
         if (collision.gameObject.tag == "player2")
         {
-            GameObject.FindGameObjectWithTag("player").GetComponent<player2>().p_pulo = 6f;
-            GameObject.FindGameObjectWithTag("player").GetComponent<player2>().p_vel = 2f;
+            GameObject.FindGameObjectWithTag("player2").GetComponent<player2>().p_pulo = 6f;
+            GameObject.FindGameObjectWithTag("player2").GetComponent<player2>().p_vel = 2f;
+            Destroy(gameObject);
         }
+
+        if (collision.gameObject.tag == "barril" || collision.gameObject.tag == "instanciado")
+        {
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.tag == "chao" || collision.gameObject.tag == "bloco")
+        {
+            gameObject.tag = "instanciado";
+        }
+
     }
 
 }

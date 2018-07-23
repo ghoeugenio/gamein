@@ -365,10 +365,13 @@ MonoBehaviour:
     type: 2}
   pro_str: 0
   pro_angle: 0
+  pro_v: 0
   pro_direcao: 0
   presss: 0
   correcao: 0
+  show_obj: 0
   jogar: {fileID: 1146122855440034, guid: 3da39239bdb8b044ca2129e8acc41635, type: 2}
+  moldura: {fileID: 0}
   crit: 0
   dano: 10
   total: 0

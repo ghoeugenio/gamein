@@ -374,6 +374,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transporte: 0
   destruidos: 0
+  desgrude: 0
 --- !u!114 &114217952214726986
 MonoBehaviour:
   m_ObjectHideFlags: 1

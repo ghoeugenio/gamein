@@ -8,10 +8,10 @@ public class projetil2 : MonoBehaviour {
     public GameObject player;
     public GameObject prefab_projetil, prefab_explosao, prefab_portal;
     public float pro_str, pro_angle;
-    private bool pro_v, c_lan, pressleft, pressright, t_ventovef, destroi, naoexplodiu, desgrude, destroidois, jahitou;
-    public bool pro_direcao, pressk;
+    private bool c_lan, pressleft, pressright, t_ventovef, destroi, naoexplodiu, desgrude, destroidois, jahitou;
+    public bool pro_direcao, pressk, show_obj, pro_v;
     private Vector2 pro_posicao, p_posicao;
-    public GameObject jogar;
+    public GameObject jogar, moldura;
     public int crit, dano, total;
     public GameObject setinha, setinhaclone;
     private float t_vento, esperar, esperapouca;
@@ -36,6 +36,20 @@ public class projetil2 : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
+        if (show_obj)
+        {
+            show_obj = false;
+            if (GameObject.FindGameObjectWithTag("jogada2").GetComponent<projetil2>().pro_direcao)
+            {
+                GameObject.FindGameObjectWithTag("jogada2").GetComponent<projetil2>().setinha.SetActive(true);
+            }
+            else
+            {
+                GameObject.FindGameObjectWithTag("jogada2").GetComponent<projetil2>().setinhaclone.SetActive(true);
+            }
+            GameObject.FindGameObjectWithTag("jogada2").GetComponent<projetil2>().symum.SetActive(true);
+        }
+
         if (GameObject.FindGameObjectWithTag("vento").GetComponent<vento>().wind < 0)
         {
             symum.GetComponent<SpriteRenderer>().flipX = true;
@@ -50,7 +64,7 @@ public class projetil2 : MonoBehaviour {
             esperar -= Time.deltaTime;
             if (esperar < 0)
             {
-                Destroy(gameObject);
+                //Destroy(gameObject);
                 GameObject.FindGameObjectWithTag("player2").GetComponent<player2>().tdj = 0;
                 Destroy(GameObject.FindGameObjectWithTag("projetil2"));            //destroi o projetil 
                 GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vezdois = true;
@@ -58,6 +72,9 @@ public class projetil2 : MonoBehaviour {
                 GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().cantwo = true;
                 GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().inc_rodadas();
                 GameObject.FindGameObjectWithTag("jogada2").GetComponent<projetil2>().prefab_projetil.GetComponent<projetil2>().dano = 10;
+                GameObject.FindGameObjectWithTag("player2").GetComponent<player2>().normaliza();
+                GameObject.FindGameObjectWithTag("Player").GetComponent<player>().move = true;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<player>().setmol();
             }
         }
 
@@ -65,7 +82,7 @@ public class projetil2 : MonoBehaviour {
         {
             printdano.fontSize = 25 + (crit * 4);
             esperar -= Time.deltaTime;
-            printdano.text = total.ToString();
+            printdano.text = (total - GameObject.FindGameObjectWithTag("Player").GetComponent<player>().defesa).ToString();
             if (esperar < 0)
             {
                 //Destroy(gameObject); 
@@ -76,9 +93,11 @@ public class projetil2 : MonoBehaviour {
                 GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().cantwo = true;
                 GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().inc_rodadas();
                 GameObject.FindGameObjectWithTag("jogada2").GetComponent<projetil2>().prefab_projetil.GetComponent<projetil2>().dano = 10;
+                GameObject.FindGameObjectWithTag("player2").GetComponent<player2>().normaliza();
+                GameObject.FindGameObjectWithTag("Player").GetComponent<player>().move = true;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<player>().setmol();
             }
         }
-
 
         if (c_lan)
         {
@@ -118,15 +137,15 @@ public class projetil2 : MonoBehaviour {
             }
         }
 
-        if (Input.GetKey(KeyCode.N) && GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().cantwo)//enquanto c estiver apertado
+        if (Input.GetKey(KeyCode.N) && GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().cantwo && player.GetComponent<player2>().move && !GameObject.FindGameObjectWithTag("CameraPrincipal"))//enquanto c estiver apertado
         {
             GameObject.FindGameObjectWithTag("player2").GetComponent<player2>().tdj = 0;
             pro_str += Time.deltaTime;//contagem da forca de acordo com o tempo
             pro_v = true;//verificador para lancamento
-            if (pro_str > 13f)
+            if (pro_str > 15.4f)
             {
                 print("overcarry");
-                pro_str = 1;//limitador de forca de lancamento
+                pro_str = 1f;//limitador de forca de lancamento
             }
             esperapouca = 0.5f;
             //GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().cantwo = false;
@@ -161,12 +180,17 @@ public class projetil2 : MonoBehaviour {
 
         }
 
-        if ((Input.GetKeyUp(KeyCode.N) && pro_v))//quando c eh solto
+        if ((Input.GetKeyUp(KeyCode.N) && pro_v) && player.GetComponent<player2>().move)//quando c eh solto
         {
+            moldura.SetActive(false);
+            player.GetComponent<player2>().move = false;
             GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().cantwo = false;
             GameObject.FindGameObjectWithTag("player2").GetComponent<player2>().tdj = 0;
             p_posicao = GameObject.FindGameObjectWithTag("player2").transform.position;
             p_posicao = new Vector2(p_posicao.x, p_posicao.y + 0.3f);
+            setinha.SetActive(false);
+            setinhaclone.SetActive(false);
+            symum.SetActive(false);
             GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vezdois = false;
             if (pressk)
             {
@@ -214,7 +238,7 @@ public class projetil2 : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.K))
         {
-            pressk = true;
+            pressk = !pressk;
         }
 
         esperapouca -= Time.deltaTime;
@@ -245,13 +269,15 @@ public class projetil2 : MonoBehaviour {
             GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().cantum = true;
         }*/
     
-        if (((collision.gameObject.tag == "bloco") || (collision.gameObject.tag == "chao") || (collision.gameObject.tag == "limite") || (collision.gameObject.tag == "limiteclone") || (collision.gameObject.tag == "calco")) && jahitou)
+        if (((collision.gameObject.tag == "bloco") || (collision.gameObject.tag == "chao") || (collision.gameObject.tag == "limite") || (collision.gameObject.tag == "limiteclone") || (collision.gameObject.tag == "calco") || (collision.gameObject.tag == "instanciado")) && jahitou)
         {
             jahitou = false;
             GameObject.FindGameObjectWithTag("player2").GetComponent<player2>().tdj = 0;
+            GameObject.FindGameObjectWithTag("player2").GetComponent<player2>().normaliza();
+            GameObject.FindGameObjectWithTag("jogada2").GetComponent<projetil2>().prefab_projetil.GetComponent<projetil2>().dano = 10;
             //GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vez = true;
             //GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vezdois = false;
-            if (collision.gameObject.tag == "bloco")
+            if (collision.gameObject.tag == "bloco" || (collision.gameObject.tag == "instanciado"))
             {
                 Destroy(collision.gameObject);
             }
@@ -272,6 +298,8 @@ public class projetil2 : MonoBehaviour {
             GameObject.FindGameObjectWithTag("AllBlocos").GetComponent<AudioSource>().Play();
             GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().cantum = true;
             GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().inc_rodadas();
+            GameObject.FindGameObjectWithTag("Player").GetComponent<player>().move = true;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<player>().setmol();
         }
 
         if (collision.gameObject.tag == "Player" && jahitou)

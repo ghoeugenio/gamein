@@ -8,22 +8,21 @@ public class projetil : MonoBehaviour {
     public GameObject player;
     public GameObject prefab_projetil, prefab_explosao, prefab_portal;
     public float pro_str, pro_angle;
-    private bool pro_v, c_lan, pressleft, pressright, t_ventovef, destroi, naoexplodiu, desgrude, destroidois, jahitou;
-    public bool pro_direcao, presss, correcao;
+    private bool c_lan, pressleft, pressright, t_ventovef, destroi, naoexplodiu, desgrude, destroidois, jahitou;
+    public bool pro_v, pro_direcao, presss, correcao, show_obj ;
     private Vector2 pro_posicao, p_posicao;
-    public GameObject jogar;
+    public GameObject jogar, moldura;
     public int crit, dano, total;
     public GameObject setinha, setinhaclone;
     public GameObject symum;
     private float t_vento, esperar, esperapouca;
     private Vector2 vec_correcao;
     public Text printdano;
-    //private Animator animator;
 
     // Use this for initialization
     void Start () {
 
-        pro_str = 1.0f;
+        pro_str = 1f;
         pro_angle = 2.0f;
         t_vento = 0.5f;
         presss = false;
@@ -38,6 +37,20 @@ public class projetil : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (show_obj)
+        {
+            show_obj = false;
+            if (GameObject.FindGameObjectWithTag("jogada").GetComponent<projetil>().pro_direcao)
+            {
+                GameObject.FindGameObjectWithTag("jogada").GetComponent<projetil>().setinha.SetActive(true);
+            }
+            else
+            {
+                GameObject.FindGameObjectWithTag("jogada").GetComponent<projetil>().setinhaclone.SetActive(true);
+            }
+            GameObject.FindGameObjectWithTag("jogada").GetComponent<projetil>().symum.SetActive(true);
+        }
 
         if (GameObject.FindGameObjectWithTag("vento").GetComponent<vento>().wind < 0)
         {
@@ -70,6 +83,9 @@ public class projetil : MonoBehaviour {
                 GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().cantum = true;
                 GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().inc_rodadas();
                 GameObject.FindGameObjectWithTag("jogada").GetComponent<projetil>().prefab_projetil.GetComponent<projetil>().dano = 10;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<player>().normaliza();
+                GameObject.FindGameObjectWithTag("player2").GetComponent<player2>().move = true;
+                GameObject.FindGameObjectWithTag("player2").GetComponent<player2>().setmol();
             }
         }
 
@@ -77,9 +93,10 @@ public class projetil : MonoBehaviour {
         {
             printdano.fontSize = 25 + (crit * 4);
             esperar -= Time.deltaTime;
-            printdano.text = total.ToString();
+            printdano.text = (total - GameObject.FindGameObjectWithTag("player2").GetComponent<player2>().defesa).ToString();
             if (esperar < 0)
             {
+                GameObject.FindGameObjectWithTag("Player").GetComponent<player>().especial();
                 //Destroy(gameObject); 
                 GameObject.FindGameObjectWithTag("Player").GetComponent<player>().tdj = 0;
                 Destroy(GameObject.FindGameObjectWithTag("projetil"));            //destroi o projetil
@@ -88,9 +105,16 @@ public class projetil : MonoBehaviour {
                 GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().cantum = true;
                 GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().inc_rodadas();
                 GameObject.FindGameObjectWithTag("jogada").GetComponent<projetil>().prefab_projetil.GetComponent<projetil>().dano = 10;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<player>().normaliza();
+                GameObject.FindGameObjectWithTag("player2").GetComponent<player2>().move = true;
+                GameObject.FindGameObjectWithTag("player2").GetComponent<player2>().setmol();
             }
         }
 
+        /*if (player.GetComponent<player>().move && Input.GetKeyUp(KeyCode.Space))
+        {
+            moldura.SetActive(true);
+        }*/
 
         if (c_lan)
         {
@@ -99,7 +123,7 @@ public class projetil : MonoBehaviour {
             c_lan = false;
         }
         
-        if (Input.GetKey(KeyCode.F))//direciona a palheta pra baixo
+        if (Input.GetKey(KeyCode.F) && player.GetComponent<player>().move)//direciona a palheta pra baixo
         {
             if (pro_angle > 0.1f)//limite de anglo
             {
@@ -114,7 +138,7 @@ public class projetil : MonoBehaviour {
                 }
             }
         }
-        if (Input.GetKey(KeyCode.R))//direciona a palheta pra cima
+        if (Input.GetKey(KeyCode.R) && player.GetComponent<player>().move)//direciona a palheta pra cima
         {
             if (pro_angle <= 4f)//limite de anglo
             {
@@ -130,20 +154,20 @@ public class projetil : MonoBehaviour {
             }
         }
 
-        if (Input.GetKey(KeyCode.C) && GameObject.FindGameObjectWithTag("jogar").gameObject.GetComponent<jogar>().cantum)//enquanto c estiver apertado
+        if (Input.GetKey(KeyCode.C) && GameObject.FindGameObjectWithTag("jogar").gameObject.GetComponent<jogar>().cantum && player.GetComponent<player>().move && !GameObject.FindGameObjectWithTag("CameraPrincipal"))//enquanto c estiver apertado
         {
             GameObject.FindGameObjectWithTag("Player").GetComponent<player>().tdj = 0;
             pro_str += Time.deltaTime;//contagem da forca de acordo com o tempo
             pro_v = true;//verificador para lancamento
-            if (pro_str > 13f)
+            if (pro_str > 15.4f)
             {
                 print("overcarry");
-                pro_str = 1;//limitador de forca de lancamento
+                pro_str = 1f;//limitador de forca de lancamento
             }
             esperapouca = 0.5f;
         }
 
-        if (Input.GetKey(KeyCode.Q))    //escolha da direcao
+        if (Input.GetKey(KeyCode.Q) && player.GetComponent<player>().move)    //escolha da direcao
         {
             if (pressright)
             {
@@ -157,7 +181,7 @@ public class projetil : MonoBehaviour {
             setinhaclone.SetActive(true);
         }
 
-        if (Input.GetKey(KeyCode.E))    //escolha da direcao
+        if (Input.GetKey(KeyCode.E) && player.GetComponent<player>().move)    //escolha da direcao
         {
             if (pressleft)
             {
@@ -172,13 +196,17 @@ public class projetil : MonoBehaviour {
 
         }
 
-        if ((Input.GetKeyUp(KeyCode.C) && pro_v))//quando c eh solto
+        if ((Input.GetKeyUp(KeyCode.C) && pro_v) && player.GetComponent<player>().move)//quando c eh solto
         {
-            
+            moldura.SetActive(false);
+            player.GetComponent<player>().move = false;
             GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().cantum = false;
             GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<player>().tdj = 0;
             p_posicao = GameObject.FindGameObjectWithTag("Player").gameObject.transform.position;
             p_posicao = new Vector2(p_posicao.x, p_posicao.y + 0.3f);
+            setinha.SetActive(false);
+            setinhaclone.SetActive(false);
+            symum.SetActive(false);
             GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vez = false;
             if (presss)
             {
@@ -227,7 +255,7 @@ public class projetil : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.S))
         {
-            presss = true;
+            presss = !presss;
         }
 
         esperapouca -= Time.deltaTime;
@@ -268,13 +296,15 @@ public class projetil : MonoBehaviour {
             GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().cantum = true;
         }*/
 
-        if (((collision.gameObject.tag == "bloco") || (collision.gameObject.tag == "chao") || (collision.gameObject.tag == "limite") || (collision.gameObject.tag == "limiteclone") || (collision.gameObject.tag == "calco")) && jahitou)
+        if (((collision.gameObject.tag == "bloco") || (collision.gameObject.tag == "chao") || (collision.gameObject.tag == "limite") || (collision.gameObject.tag == "limiteclone") || (collision.gameObject.tag == "calco") || (collision.gameObject.tag == "instanciado")) && jahitou)
         {
             jahitou = false;
             GameObject.FindGameObjectWithTag("Player").GetComponent<player>().tdj = 0;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<player>().normaliza();
+            GameObject.FindGameObjectWithTag("jogada").GetComponent<projetil>().prefab_projetil.GetComponent<projetil>().dano = 10;
             //GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vez = true;
             //GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().vezdois = false;
-            if (collision.gameObject.tag == "bloco")
+            if (collision.gameObject.tag == "bloco" || collision.gameObject.tag == "instanciado")
             {
                 Destroy(collision.gameObject);
             }
@@ -296,6 +326,8 @@ public class projetil : MonoBehaviour {
             GameObject.FindGameObjectWithTag("AllBlocos").GetComponent<AudioSource>().Play();
             GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().inc_rodadas();
             GameObject.FindGameObjectWithTag("jogar").GetComponent<jogar>().cantum = true;
+            GameObject.FindGameObjectWithTag("player2").GetComponent<player2>().move = true;
+            GameObject.FindGameObjectWithTag("player2").GetComponent<player2>().setmol();
         }
 
         if (collision.gameObject.tag == "player2" && jahitou)
@@ -311,6 +343,7 @@ public class projetil : MonoBehaviour {
             Destroy(GameObject.FindGameObjectWithTag("projetil").GetComponent<Rigidbody2D>());
             Destroy(GameObject.FindGameObjectWithTag("projetil").GetComponent<BoxCollider2D>());
             Destroy(GameObject.FindGameObjectWithTag("projetil").GetComponent<Animation>());
+            
             Update();
         }
 

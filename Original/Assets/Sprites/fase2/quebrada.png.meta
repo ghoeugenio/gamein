@@ -1,7 +1,18 @@
 fileFormatVersion: 2
 guid: 680c4a91a50306149b3d500ce5051d6d
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: quebrada_0
+    21300002: quebrada_1
+    21300004: quebrada_2
+    21300006: quebrada_3
+    21300008: quebrada_4
+    21300010: quebrada_5
+    21300012: quebrada_6
+    21300014: quebrada_7
+    21300016: quebrada_8
+    21300018: quebrada_9
+    21300020: quebrada_10
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -43,7 +54,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 80
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -91,7 +102,227 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: quebrada_0
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 3384
+        width: 280
+        height: 281
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 226c5ed2dad187e4490b7a562339ff37
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quebrada_1
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 3384
+        width: 280
+        height: 281
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a61cf9873fc1d57488ac7cda180d1497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quebrada_2
+      rect:
+        serializedVersion: 2
+        x: 2344
+        y: 3384
+        width: 280
+        height: 281
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20d4ff4a7c8409141a48980336c6d6aa
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quebrada_3
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 2360
+        width: 280
+        height: 281
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8359c436409d59f45ba8c474b3fd33f2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quebrada_4
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 2360
+        width: 280
+        height: 281
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de704d76b71c58c4787d3e162a475604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quebrada_5
+      rect:
+        serializedVersion: 2
+        x: 2344
+        y: 2360
+        width: 280
+        height: 281
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: daf0719ba295e7544b199c76e12dfc50
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quebrada_6
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 1336
+        width: 280
+        height: 281
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5edac051fba56d54e97afe6af40dcf59
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quebrada_7
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 1336
+        width: 280
+        height: 281
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5dfe0126d5544f46a8a5d0277727bf9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quebrada_8
+      rect:
+        serializedVersion: 2
+        x: 2344
+        y: 1336
+        width: 280
+        height: 281
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18ba8daa8ff0f59419c253645cbdee77
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quebrada_9
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 312
+        width: 280
+        height: 281
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b61aa1a20e548145ae7ea96d6043886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quebrada_10
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 312
+        width: 280
+        height: 281
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edf8a240cb6f0ad4a98a53401c7a7bea
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

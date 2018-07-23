@@ -27,5 +27,15 @@ public class sangue : MonoBehaviour {
             GameObject.FindGameObjectWithTag("player2").GetComponent<player2>().vida += 20;
             Destroy(gameObject);
         }
+
+        if (collision.gameObject.tag == "barril" || collision.gameObject.tag == "instanciado")
+        {
+            Destroy(collision.gameObject);
+        }
+
+        if(collision.gameObject.tag == "chao" || collision.gameObject.tag == "bloco")
+        {
+            gameObject.tag = "instanciado";
+        }
     }
 }
