@@ -5,25 +5,36 @@ using UnityEngine;
 public class explosao_barril : MonoBehaviour {
 
     public GameObject text;
-    private bool hit1, hit2;
-    private float esperar;
+    private bool hit1, hit2, esperou;
+    private float esperar, desesperar;
 
     // Use this for initialization
     void Start ()
     {
-        esperar = 2f;
+        esperou = false;
+        desesperar = 1f;
+        esperar = 1f;
         hit1 = true;
         hit2 = true;
     }
 	
 	// Update is called once per frame
 	void Update ()
-    {       
+    {
+        if (esperou)
+        {
+            desesperar -= Time.deltaTime;
+            if (desesperar < 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+
         esperar -= Time.deltaTime;
         if (esperar < 0)
         {
-            Destroy(gameObject);
-        }
+            esperou = true;
+        }   
     }
 
     public void OnCollisionEnter2D(Collision2D collision)

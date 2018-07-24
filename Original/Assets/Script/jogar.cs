@@ -8,7 +8,7 @@ public class jogar : MonoBehaviour {
     public bool vez, vezdois, cantum, cantwo;
     public GameObject qua1p, qua1c, qua1j, tri1p, tri1c, tri1j, pen1p, pen1c, pen1j, tra1p, tra1c, tra1j, oct1p, oct1c, oct1j;
     public GameObject qua2p, qua2c, qua2j, tri2p, tri2c, tri2j, pen2p, pen2c, pen2j, tra2p, tra2c, tra2j, oct2p, oct2c, oct2j;
-    public GameObject control_bonus, cameraprincipal;
+    public GameObject control_bonus, cameraprincipal; //menu_pause;
     private int x, y;
     public int rodadas;
     public Scene cena;
@@ -96,8 +96,30 @@ public class jogar : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        if(GameObject.FindGameObjectWithTag("Player").GetComponent<player>().vida <= 0)
+        {
+            SceneManager.LoadScene("p2win");
+        }
+
+        if (GameObject.FindGameObjectWithTag("player2").GetComponent<player2>().vida <= 0)
+        {
+            SceneManager.LoadScene("p1win");
+        }
+
         if (vez)
         {
+           /* if (Input.GetKey(KeyCode.Escape))
+            {
+                if (menu_pause == true)
+                {
+                    menu_pause.SetActive(false);
+                }
+                else
+                {
+                    menu_pause.SetActive(true);
+                }
+            }*/
+
             GameObject.FindGameObjectWithTag("jogada").GetComponent<projetil>().show_obj = true;
             if (x == 0)
             {

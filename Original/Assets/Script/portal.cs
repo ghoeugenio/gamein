@@ -89,7 +89,7 @@ public class portal : MonoBehaviour {
     public void OnCollisionEnter2D(Collision2D collision)
     {
         
-        if ((collision.gameObject.tag == "chao") || (collision.gameObject.tag == "bloco") || (collision.gameObject.tag == "limite") || (collision.gameObject.tag == "limiteclone") || (collision.gameObject.tag == "calco") )
+        if ((collision.gameObject.tag == "chao") || (collision.gameObject.tag == "bloco") || (collision.gameObject.tag == "limite") || (collision.gameObject.tag == "limiteclone") || (collision.gameObject.tag == "calco") || (collision.gameObject.tag == "instanciado"))
         {
             GameObject.FindGameObjectWithTag("portal").GetComponent<AudioSource>().Play();
             transporte = true;

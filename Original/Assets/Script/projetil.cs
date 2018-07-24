@@ -157,7 +157,7 @@ public class projetil : MonoBehaviour {
         if (Input.GetKey(KeyCode.C) && GameObject.FindGameObjectWithTag("jogar").gameObject.GetComponent<jogar>().cantum && player.GetComponent<player>().move && !GameObject.FindGameObjectWithTag("CameraPrincipal"))//enquanto c estiver apertado
         {
             GameObject.FindGameObjectWithTag("Player").GetComponent<player>().tdj = 0;
-            pro_str += Time.deltaTime;//contagem da forca de acordo com o tempo
+            pro_str += 2 * Time.deltaTime;//contagem da forca de acordo com o tempo
             pro_v = true;//verificador para lancamento
             if (pro_str > 15.4f)
             {

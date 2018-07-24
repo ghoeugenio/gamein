@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class escolhefase : MonoBehaviour {
 
     public AudioSource som;
+    public SpriteRenderer regras, especiais;
 
     void Start()
     {
@@ -35,6 +36,9 @@ public class escolhefase : MonoBehaviour {
         SceneManager.LoadScene("selecaodepersonagem");
     }
 
-
+    public void mostrarregra()
+    {
+        SceneManager.LoadScene("regras");
+    }
 
 }

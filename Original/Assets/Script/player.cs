@@ -40,11 +40,6 @@ public class player : MonoBehaviour {
             vida = limite_vida;
         }
 
-        if (vida <= 0)
-        {
-            SceneManager.LoadScene("p2win");
-        }
-
         tdj += Time.deltaTime;
 
         if (tdj >= 20f)
@@ -169,7 +164,7 @@ public class player : MonoBehaviour {
 
         if (x == 1)
         {
-            defesa = 5;
+            defesa = defesa + 5;
         }
 
         if (x == 2)
@@ -179,8 +174,8 @@ public class player : MonoBehaviour {
 
         if (x == 3)
         {
-            limite_vida = 150;
-            defesa = 1;
+            limite_vida = limite_vida + 50;
+            defesa = defesa + 1;
         }
 
         if (x == 4)

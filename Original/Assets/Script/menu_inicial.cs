@@ -32,10 +32,10 @@ public class menu_inicial : MonoBehaviour {
             SceneManager.LoadScene("MenuPrincipal");
         }
 
-        /*if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
-        }*/
+        }
 
     }
 }

@@ -18,7 +18,7 @@ public class sound_game : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         cena = SceneManager.GetActiveScene();
-        if (cena.name == "Fase")
+        if (cena.name == "Fase" || cena.name == "Fase2")
         {
             Destroy(gameObject);
         }
